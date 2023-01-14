@@ -1,0 +1,15 @@
+* {
+    padding: 2px;
+    margin: 2px;
+    text-align: center;
+}
+
+h1, a {
+    color: cornflowerblue;
+}
+
+.rest-rants {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}

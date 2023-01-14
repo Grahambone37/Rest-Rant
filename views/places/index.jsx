@@ -13,7 +13,9 @@ function places(data) {
     return (
         <Def>
             <h1>Rest Rant(s)</h1>
-            {placesFormatted}
+            <div className='rest-rants'>
+                {placesFormatted}
+            </div>
         </Def>
     )
 }
