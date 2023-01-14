@@ -13,3 +13,11 @@ h1, a {
     flex-flow: row wrap;
     justify-content: space-evenly;
 }
+
+img {
+    max-width: 75%;
+}
+
+.rest-rant-pic {
+    max-width: 50%;
+}

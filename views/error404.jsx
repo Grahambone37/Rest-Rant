@@ -5,7 +5,10 @@ function error404() {
     return (
         <Def>
             <main>
-            <img src="https://http.cat/404" alt="Error 404, Page Not Found" width="100%"></img>
+                <div>
+                    <h1>Error 404: Page Not Found</h1>
+                    <img src="/images/cat-in-carpet.jpg" alt="cat-under-carpet"></img>
+                </div>
             </main>
         </Def>
     )

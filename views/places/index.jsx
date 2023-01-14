@@ -6,13 +6,21 @@ function places(data) {
         return (
             <div key={index}>
                 <h2>{place.name}</h2>
-                <img src={place.pic} alt={place.name}></img>
+                <p>
+                    {place.cuisines}
+                </p>
+                <img className='rest-rant-pic' src={place.pic} alt={place.name}></img>
+                <p>
+                    Located in {place.city}, {place.state}
+                </p>
+                <hr></hr>
             </div>
         )
     })
     return (
         <Def>
             <h1>Rest Rant(s)</h1>
+            <hr></hr>
             <div className='rest-rants'>
                 {placesFormatted}
             </div>
