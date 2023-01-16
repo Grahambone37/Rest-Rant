@@ -1,24 +1,22 @@
 const router = require('express').Router()
+const placesArray = require('../models/places-array')
+
 
 router.get('/new', (req, res) => {
     res.render('places/new')
 })
 
 router.get('/', (req, res) => {
-    let places = [{
-        name: "H-Thai-ML",
-        city: "Seattle",
-        state: "WA",
-        cuisines: "Thai, Pan-Asian",
-        pic: "/images/thai-fried-rice.jpg"
-    }, {
-        name: "Coding Cat Cafe",
-        city: "Phoenix",
-        state: "AZ",
-        cuisines: "Coffee, Bakery",
-        pic: "/images/cat-cafe.jpg"
-    }]
-    res.render('places/index', {places})
+    res.render('places/index',
+        {
+            places: placesArray
+        }
+    )
+})
+
+router.post('/', (req, res) => {
+    placesArray.push(req.body)
+    res.redirect('/places')
 })
 
 module.exports = router

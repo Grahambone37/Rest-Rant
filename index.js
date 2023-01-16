@@ -9,6 +9,8 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 //link back to /public setup
 app.use(express.static('public'))
+//lets the post route work
+app.use(express.urlencoded({extended: true}))
 
 //link to places.js
 app.use('/places', require('./controllers/places'))
@@ -29,6 +31,6 @@ app.listen(process.env.PORT, () => {
 })
   
 
-
-
-    
+ 
+ 
+   
