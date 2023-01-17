@@ -3,13 +3,13 @@ const Def = require('../default')
 
 function newForm() {
     return (
-        <Def>
+        <Def title="Add a Rest-Rant">
             <main>
                 <h1>Add a New Place</h1>
                 <form method="POST" action="/places">
                     <div>
                         <label htmlFor='name'>Place Name</label>
-                        <input type="text" id='name' name="name"></input>
+                        <input type="text" id='name' name="name" required></input>
                     </div>
                     <div>
                         <label htmlFor='pic'>Place pic</label>
@@ -25,7 +25,7 @@ function newForm() {
                     </div>
                     <div>
                         <label htmlFor='cuisines'>Place cuisines</label>
-                        <input type="text" id='cuisines' name="cuisines"></input>
+                        <input type="text" id='cuisines' name="cuisines" required></input>
                     </div>
                     <input type="submit" value="Add Place" ></input>
                 </form>

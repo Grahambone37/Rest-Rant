@@ -18,11 +18,16 @@ function places(data) {
         )
     })
     return (
-        <Def>
+        <Def title="Rest-Rant(s)">
             <h1>Rest Rant(s)</h1>
             <hr></hr>
             <div className='rest-rants'>
                 {placesFormatted}
+            </div>
+            <div>
+                <a href="/places/new">
+                    <button className='btn btn-primary'>Add a Rest-Rant</button>
+                </a>
             </div>
         </Def>
     )

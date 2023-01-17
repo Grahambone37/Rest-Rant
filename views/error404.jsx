@@ -3,7 +3,7 @@ const Def = require('./default')
 
 function error404() {
     return (
-        <Def>
+        <Def title="Page Not Found">
             <main>
                 <div>
                     <h1>Error 404: Page Not Found</h1>
