@@ -7,27 +7,27 @@ function newForm() {
             <main>
                 <h1>Add a New Place</h1>
                 <form method="POST" action="/places">
-                    <div>
+                    <div className='form-group'>
                         <label htmlFor='name'>Place Name</label>
-                        <input type="text" id='name' name="name" required></input>
+                        <input className='form-control' type="text" id='name' name="name" required></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                         <label htmlFor='pic'>Place pic</label>
-                        <input type="url" id='pic' name="pic"></input>
+                        <input className='form-control' type="url" id='pic' name="pic"></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                         <label htmlFor='city'>Place city</label>
-                        <input type="text" id='city' name="city"></input>
+                        <input className='form-control' type="text" id='city' name="city"></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                         <label htmlFor='state'>Place state</label>
-                        <input type="text" id='state' name="state"></input>
+                        <input className='form-control' type="text" id='state' name="state"></input>
                     </div>
-                    <div>
+                    <div className='form-group'>
                         <label htmlFor='cuisines'>Place cuisines</label>
-                        <input type="text" id='cuisines' name="cuisines" required></input>
+                        <input className='form-control' type="text" id='cuisines' name="cuisines" required></input>
                     </div>
-                    <input type="submit" value="Add Place" ></input>
+                    <input type="submit" value="Add Place" className='btn btn-primary'></input>
                 </form>
             </main>
         </Def>
