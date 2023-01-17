@@ -15,3 +15,4 @@ IMAGES FROM PIXABAY:[
 2. skipped part 2 readme editing cause swagger API exists
 3. Part 3: made links to views stubs with React
 4. Part 4: link to css and images via 'public' folder
+5. Part 5: added a page to add more Rest-Rant(s)

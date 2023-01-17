@@ -10,7 +10,9 @@ function Def(html) {
             </head>
             <body>
                 {html.children}
-                <a href="/" >Back To Home</a>
+                <footer>
+                    <a href="/" >Back To Home</a>
+                </footer>
             </body>
         </html>
     )

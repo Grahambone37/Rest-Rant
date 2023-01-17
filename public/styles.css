@@ -21,3 +21,13 @@ img {
 .rest-rant-pic {
     max-height: 40vh;
 }
+
+body {
+    min-height: 99vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
