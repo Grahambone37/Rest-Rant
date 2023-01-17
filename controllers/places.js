@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const placesArray = require('../models/places-array')
+const placesArray = require('../models/places-array.js')
 
 
 router.get('/new', (req, res) => {
@@ -15,6 +15,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    if (!req.body.pic) {
+        req.body.pic = '/images/default-food.jpg'
+    }
+    if (!req.body.city) {
+        req.body.city = "Anytown"
+    }
+    if (!req.body.state) {
+        req.body.state = 'USA'
+    }
     placesArray.push(req.body)
     res.redirect('/places')
 })

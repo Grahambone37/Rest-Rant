@@ -7,6 +7,7 @@ IMAGES FROM PIXABAY:[
     https://pixabay.com/photos/cat-ceiling-hide-cute-naughty-2806957/,
     https://pixabay.com/photos/thai-fried-rice-prawn-fried-rice-3253027/,
     https://pixabay.com/photos/cat-iced-coffee-cafe-persian-cat-6154885/,
+    https://pixabay.com/photos/mediterranean-cuisine-eat-food-2378758/,
 
 ]
 
