@@ -14,6 +14,17 @@ router.get('/', (req, res) => {
     )
 })
 
+router.get('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    } else if (!placesArray[id]) {
+        res.render('error404')
+    } else {
+        res.render('places/show', {place: placesArray[id]})
+    }
+})
+
 router.post('/', (req, res) => {
     if (!req.body.pic) {
         req.body.pic = '/images/default-food.jpg'
