@@ -1,10 +1,10 @@
 * {
-    padding-bottom: 2px;
-    margin: 2px;
     text-align: center;
 }
 
 body {
+    padding: 2px;
+    margin: 2px;
     background-color: lightblue;
 }
 
@@ -55,4 +55,27 @@ nav a {
 nav a:hover {
     color: pink;
     text-decoration: none
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+.pic {
+    max-width: 70%;
+}
+
+.description {
+    max-width: 30%;
+    padding-right: 5em;
+}
+
+.btn {
+    margin: 4px;
+}
+
+img {
+    padding-bottom: 4px;
 }
