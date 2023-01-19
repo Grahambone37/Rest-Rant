@@ -3,10 +3,10 @@ const Def = require('../default')
 
 function edit_form(data) {
     return (
-        <Def>
+        <Def title="Edit Rest-Rant">
             <main>
-                <h1>Add a New Place</h1>
-                <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
+                <h1>Edit a Place</h1>
+                <form method="POST" action={`/places/${data.id}?_method=PUT`}>
                     <div className="row">
                         <div className='form-group col-sm-6'>
                             <label htmlFor='name'>Place Name</label>
@@ -29,7 +29,7 @@ function edit_form(data) {
                         <label htmlFor='cuisines'>Place cuisines</label>
                         <input className='form-control' type="text" id='cuisines' name="cuisines" value={data.place.cuisines} required></input>
                     </div>
-                    <input type="submit" value="Add Place" className='btn btn-primary'></input>
+                    <input type="submit" value="Edit Place" className='btn btn-primary'></input>
                 </form>
             </main>
         </Def>

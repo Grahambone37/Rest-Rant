@@ -21,7 +21,7 @@ router.get('/:id/edit', (req, res) => {
     } else if (!placesArray[id]) {
         res.render('error404')
     } else {
-        res.render('places/edit', {place: placesArray[id]})
+        res.render('places/edit', {place: placesArray[id], id})
     }
 })
 
@@ -48,6 +48,27 @@ router.post('/', (req, res) => {
     }
     placesArray.push(req.body)
     res.redirect('/places')
+})
+
+router.put('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    } else if (!placesArray[id]) {
+        res.render('error404')
+    } else {
+        if (!req.body.pic) {
+            req.body.pic = '/images/default-food.jpg'
+        }
+        if (!req.body.city) {
+            req.body.city = "Anytown"
+        }
+        if (!req.body.state) {
+            req.body.state = 'USA'
+        }
+        placesArray[id] = req.body
+        res.redirect(`/places/${id}`)
+    }
 })
 
 router.delete('/:id', (req, res) => {
