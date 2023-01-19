@@ -1,6 +1,7 @@
 //setup for express and .env
 require('dotenv').config()
 const express = require('express')
+const methodOverride = require('method-override')
 const app = express()
 
 //jsx files setup
@@ -10,7 +11,9 @@ app.engine('jsx', require('express-react-views').createEngine())
 //link back to /public setup
 app.use(express.static('public'))
 //lets the post route work
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
+//enables method-override
+app.use(methodOverride('_method'))
 
 //link to places.js
 app.use('/places', require('./controllers/places'))
