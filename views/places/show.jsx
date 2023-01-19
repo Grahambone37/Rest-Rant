@@ -6,7 +6,7 @@ function show(data) {
         <Def>
             <main>
                 <h1>{data.place.name}</h1>
-                <div className="row">
+                <div className="rowNotBootstrap">
                     <div className='pic'>
                         <img src={data.place.pic} alt="Rest-Rant pic"></img>
                     </div>
