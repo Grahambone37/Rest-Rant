@@ -1,7 +1,8 @@
 const router = require('express').Router()
 //commenting out stuff instead of deleting for now
-//const placesArray = require('../models/places-array.js')
 const db = require('../models')
+//lodash helps with the post route
+const _ = require('lodash')
 
 router.get('/', (req, res) => {
     db.Place.find()
@@ -15,20 +16,9 @@ router.get('/', (req, res) => {
         })
 })  
 
-// need if !req.body.etc to all be undefined to get default
 router.post('/', (req, res) => {
-    if (!req.body.pic) {
-        req.body.pic = undefined
-    }
-    if (!req.body.city) {
-        req.body.city = undefined
-    }
-    if (!req.body.state) {
-        req.body.state = undefined
-    }
-    if (!req.body.founded) {
-        req.body.founded = undefined
-    }
+    // lodash makes it so each value thats undefined in the form gets the default value
+    req.body = _.mapValues(req.body, v => v == ''? undefined: v)
     db.Place.create(req.body)
         .then(() => {
             res.redirect('/places')
