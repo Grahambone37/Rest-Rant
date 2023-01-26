@@ -11,6 +11,10 @@ const placeSchema = new Schema({
     founded: { type: Number, default: new Date().getFullYear() }
 })
 
+placeSchema.methods.showEstablished = function() {
+    return `${this.name} has been serving ${this.city}, ${this.state} since ${this.founded}.`
+}
+        
 const Place = mongoose.model('Place', placeSchema)
 
 module.exports = Place

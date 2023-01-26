@@ -63,8 +63,12 @@ nav a:hover {
     justify-content: space-evenly;
 }
 
-.pic {
+.pic, .description {
+    display: flex;
+    flex-direction: column;
     max-width: 70%;
+    align-items: center;
+    justify-content: center;
 }
 
 .description {
@@ -77,5 +81,13 @@ nav a:hover {
 }
 
 img {
-    padding-bottom: 4px;
+    padding: 1.5em;
+}
+
+.slightly-blue {
+    color: lightskyblue;
+}
+
+.rest-rant {
+    max-width: 50%
 }
