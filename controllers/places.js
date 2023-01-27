@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     db.Place.find()
         .then(places => {
             res.render("places/index", { places })
-            console.log(places)
+            //console.log(places)
         })
         .catch(err => {
             console.log(err)
@@ -71,7 +71,11 @@ router.delete('/:id', (req, res) => {
         placesArray.splice(id, 1)
         res.redirect('/places')
     }*/
-    res.send('DELETE /places/:id stub')
+    db.Place.findByIdAndDelete(req.params.id)
+        .then(deletedRestRant => {
+            console.log(deletedRestRant)
+            res.redirect('/places')
+        })
 })
 
 router.get('/:id/edit', (req, res) => {
