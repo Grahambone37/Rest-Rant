@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
             res.render('error404')
         })
 })  
-
+ 
 router.post('/', (req, res) => {
     // lodash makes it so each value thats undefined in the form gets the default value
     req.body = _.mapValues(req.body, v => v == ''? undefined: v)
@@ -24,11 +24,20 @@ router.post('/', (req, res) => {
             res.redirect('/places')
         })
         .catch(err => {
-            console.log('err', err)
-            res.render('error404')
+            if (err && err.name == 'ValidationError') {
+                let message = 'Validation Error: '
+                for (var field in err.errors) {
+                    message += `${field} was ${err.errors[field].value}. `
+                    message += `${err.errors[field].message}`
+                }
+                console.log('Validation error message', message)
+                res.render('places/new', { message })
+            } else {
+                res.render('error404')
+            }
         })
 })
-
+ 
 router.get('/new', (req, res) => {
     res.render('places/new')
 })
@@ -45,25 +54,11 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    /*let id = Number(req.params.id)
-    if (isNaN(id)) {
-        res.render('error404')
-    } else if (!placesArray[id]) {
-        res.render('error404')
-    } else {
-        if (!req.body.pic) {
-            req.body.pic = '/images/default-food.jpg'
-        }
-        if (!req.body.city) {
-            req.body.city = "Anytown"
-        }
-        if (!req.body.state) {
-            req.body.state = 'USA'
-        }
-        placesArray[id] = req.body
-        res.redirect(`/places/${id}`)
-    }*/
-    res.send('PUT /places/:id stub')
+    db.Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(updatedPlace => {
+            console.log(updatedPlace)
+            res.redirect(`/places/${req.params.id}`)
+        })
 })
 
 router.delete('/:id', (req, res) => {
@@ -80,17 +75,12 @@ router.delete('/:id', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-    /*let id = Number(req.params.id)
-    if (isNaN(id)) {
-        res.render('error404')
-    } else if (!placesArray[id]) {
-        res.render('error404')
-    } else {
-        res.render('places/edit', {place: placesArray[id], id})
-    }*/
-    res.send('GET edit form stub')
+    db.Place.findById(req.params.id)
+        .then(foundPlace => {
+            res.render('places/edit', { place: foundPlace })
+        })
 })
-
+   
 //not sure what these are for yet
 router.post('/:id/rant', (req, res) => {
     res.send('GET /places/:id/rant stub')
