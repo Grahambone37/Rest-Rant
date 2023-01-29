@@ -8,7 +8,8 @@ const placeSchema = new Schema({
     cuisines: { type: String, required: true },
     city: { type: String, default: "Anytown" },
     state: { type: String, default: "USA" },
-    founded: { type: Number, default: new Date().getFullYear(), min: [1673, "Surely not that old?!"], max: [new Date().getFullYear(), "Hey, this year is in the future!"] }
+    founded: { type: Number, default: new Date().getFullYear(), min: [1673, "Surely not that old?!"], max: [new Date().getFullYear(), "Hey, this year is in the future!"] },
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 })
               
 placeSchema.methods.showEstablished = function() {
