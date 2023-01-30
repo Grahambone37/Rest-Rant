@@ -56,6 +56,22 @@ function show(data) {
                 <div>
                     <h2 className='slightly-blue'><u>Add A Comment!</u></h2>
                     <form method="POST" action={`/places/${data.place.id}/rant`}>
+                        <div className='form-group'>
+                            <label htmlFor='author'>Comment Author Name</label>
+                            <input className='form-control' type="text" id="author" name="author"></input>
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='content'>Comment</label>    
+                            <textarea className='form-control' type="text" id="content" name="content"></textarea>
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='stars'>Star Rating</label> 
+                            <input type="number" id="stars" name="stars" step="0.5" min="0.5" max="5"></input>
+                        </div>
+                        <div className='form-group'>
+                            <label htmlFor='rant'>Rant?</label> 
+                            <input type="checkbox" id="rant" name="rant"></input>
+                        </div>
                         <input type="submit" className="btn btn-primary" defaultValue="Add Comment"></input>
                     </form>
                 </div>
