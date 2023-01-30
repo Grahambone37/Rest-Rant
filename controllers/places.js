@@ -104,9 +104,9 @@ router.post('/:id/rant', (req, res) => {
             res.render('error404')
         })
 })
-
+  
 router.delete('/:id/rant/:rantId', (req, res) => {
     res.send('DELETE /places/:id/rant/:rantId stub')
 })
- 
+       
 module.exports = router

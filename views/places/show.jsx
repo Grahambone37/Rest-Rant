@@ -65,8 +65,8 @@ function show(data) {
                             <textarea className='form-control' type="text" id="content" name="content"></textarea>
                         </div>
                         <div className='form-group'>
-                            <label htmlFor='stars'>Star Rating</label> 
-                            <input type="number" id="stars" name="stars" step="0.5" min="0.5" max="5"></input>
+                            <label htmlFor='stars'>Star Rating (low/high)</label> 
+                            <input className='rating' oninput="this.style.setProperty('--value', this.value)" type="range" id="stars" name="stars" step="0.5" min="0.5" max="5"></input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='rant'>Rant?</label> 
