@@ -2,6 +2,29 @@ const React = require('react')
 const Def = require('../default')
 
 function show(data) {
+    let commentList = []
+    if (data.place.comments.length) {
+        console.log(data.place.comments)
+        commentList = data.place.comments.map(comment => {
+            return (
+                <div className='border' key={comment.id}>
+                    <h2 className='rant'>{comment.rant ? 'Rant!' : 'Rave!'}</h2>
+                    <h4>{comment.content}</h4>
+                    <h3>
+                        <strong>- {comment.author}</strong>
+                    </h3>
+                    <h4>Rating: {comment.stars}</h4>
+                </div>
+            )
+        })
+    } else {
+        console.log(data.place.comments)
+        commentList = (
+            <h3 className='inactive'>
+                No comments yet!
+            </h3>
+        )
+    }
     return (
         <Def>
             <main>
@@ -28,8 +51,14 @@ function show(data) {
                 </div>
                 <hr></hr>
                 <h2 className='slightly-blue'>Comments</h2>
-                <h4>No comments yet!</h4>
+                <h4>{commentList}</h4>
                 <br></br>
+                <div>
+                    <h2 className='slightly-blue'><u>Add A Comment!</u></h2>
+                    <form method="POST" action={`/places/${data.place.id}/rant`}>
+                        <input type="submit" className="btn btn-primary" defaultValue="Add Comment"></input>
+                    </form>
+                </div>
             </main>
         </Def>
     )

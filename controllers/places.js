@@ -37,13 +37,14 @@ router.post('/', (req, res) => {
             }
         })
 })
- 
+   
 router.get('/new', (req, res) => {
     res.render('places/new')
 })
 
 router.get('/:id', (req, res) => {
     db.Place.findById(req.params.id)
+        .populate('comments')
         .then(place => {
             res.render('places/show', { place })
         })
@@ -52,7 +53,7 @@ router.get('/:id', (req, res) => {
             res.render('error404')
         })
 })
-
+      
 router.put('/:id', (req, res) => {
     db.Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then(updatedPlace => {
