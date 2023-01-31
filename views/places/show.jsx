@@ -39,7 +39,7 @@ function show(data) {
             )
         })
     } else {
-        console.log(data.place.comments)
+        //console.log(data.place.comments)
         commentList = (
             <h3 className='inactive'>
                 No comments yet!
