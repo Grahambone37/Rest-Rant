@@ -3,8 +3,22 @@ const Def = require('../default')
 
 function show(data) {
     let commentList = []
+    let rating = (
+        <h3 className='inactive'>
+            Not yet rated
+        </h3>
+    )
     if (data.place.comments.length) {
-        console.log(data.place.comments)
+        //console.log(data.place.comments)
+        let sumRatings = data.place.comments.reduce((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = sumRatings / data.place.comments.length
+        rating = (
+            <h3>
+                {Math.round(averageRating)} stars
+            </h3>
+        )
         commentList = data.place.comments.map(comment => {
             return (
                 <div className='border' key={comment.id}>
@@ -36,7 +50,7 @@ function show(data) {
                     <div className='description'>
                         <h1>{data.place.name}</h1>
                         <h2 className='slightly-blue'>Rating</h2>
-                        <h4>currently unrated</h4>
+                        {rating}
                         <h2 className='slightly-blue'>Description</h2>
                         <h3>{data.place.showEstablished()}</h3>
                         <h4>Serving {data.place.cuisines}</h4>
@@ -66,7 +80,7 @@ function show(data) {
                         </div>
                         <div className='form-group'>
                             <label htmlFor='stars'>Star Rating (low/high)</label> 
-                            <input className='rating' oninput="this.style.setProperty('--value', this.value)" type="range" id="stars" name="stars" step="0.5" min="0.5" max="5"></input>
+                            <input className='rating' type="range" id="stars" name="stars" step="0.5" min="0" max="5"></input>
                         </div>
                         <div className='form-group'>
                             <label htmlFor='rant'>Rant?</label> 

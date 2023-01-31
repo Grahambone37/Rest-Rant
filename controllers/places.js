@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
             res.render('error404')
         })
 })
-      
+         
 router.put('/:id', (req, res) => {
     db.Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then(updatedPlace => {
@@ -108,5 +108,5 @@ router.post('/:id/rant', (req, res) => {
 router.delete('/:id/rant/:rantId', (req, res) => {
     res.send('DELETE /places/:id/rant/:rantId stub')
 })
-       
+        
 module.exports = router
