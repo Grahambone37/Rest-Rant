@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 })  
  
 router.post('/', (req, res) => {
-    // lodash makes it so each value thats undefined in the form gets the default value
+    // lodash makes it so each value thats undefined in the form gets the default value 
     req.body = _.mapValues(req.body, v => v == ''? undefined: v)
     db.Place.create(req.body)
         .then(() => {
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
             }
         })
 })
-   
+     
 router.get('/new', (req, res) => {
     res.render('places/new')
 })
