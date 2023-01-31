@@ -60,6 +60,10 @@ router.put('/:id', (req, res) => {
             console.log(updatedPlace)
             res.redirect(`/places/${req.params.id}`)
         })
+        .catch(err => {
+            console.log('err', err)
+            res.status(404).render('error404')
+        })
 })
 
 router.delete('/:id', (req, res) => {
@@ -68,6 +72,10 @@ router.delete('/:id', (req, res) => {
             console.log(deletedRestRant)
             res.redirect('/places')
         })
+        .catch(err => {
+            console.log('err', err)
+            res.status(404).render('error404')
+        })
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -75,8 +83,12 @@ router.get('/:id/edit', (req, res) => {
         .then(foundPlace => {
             res.render('places/edit', { place: foundPlace })
         })
-})
-   
+        .catch(err => {
+            console.log('err', err)
+            res.status(404).render('error404')
+        })
+}) 
+    
 //not sure what these are for yet      
 router.post('/:id/rant', (req, res) => {
     req.body = _.mapValues(req.body, v => v == '' ? undefined : v)
@@ -101,12 +113,17 @@ router.post('/:id/rant', (req, res) => {
                 })
         })
         .catch(err => {
-            res.render('error404')
+            console.log('err', err)
+            res.status(404).render('error404')
         })
 })
-  
+   
 router.delete('/:id/rant/:rantId', (req, res) => {
-    res.send('DELETE /places/:id/rant/:rantId stub')
+    db.Comment.findByIdAndDelete(req.params.rantId)
+        .then(deletedComment => {
+            console.log(deletedComment)
+            res.redirect(`/places/${req.params.id}`)
+        })
 })
         
 module.exports = router
